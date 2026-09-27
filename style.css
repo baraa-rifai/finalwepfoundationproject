@@ -624,3 +624,44 @@ body.fullscreen-mode #prayer-section {
   justify-content: center;
   padding: 0 2rem;
 }
+
+#prayer-section .card * {
+  color: #1b4332 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+#next-prayer-name {
+  color: #1b4332 !important;
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+}
+
+#live-clock,
+#countdown-timer,
+#iqama-timer {
+  color: #1b4332 !important;
+  font-weight: 700 !important;
+}
+
+[data-bs-theme="dark"] #prayer-section .card * {
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] #next-prayer-name {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] #live-clock { color: #52b788 !important; }
+[data-bs-theme="dark"] #countdown-timer { color: #ff6b6b !important; }
+[data-bs-theme="dark"] #iqama-timer { color: #48cae4 !important; }
+
+html[data-theme-mode="dark"] #prayer-section .card *,
+html[data-theme-mode="black"] #prayer-section .card * {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme-mode="dark"] #next-prayer-name,
+html[data-theme-mode="black"] #next-prayer-name {
+  color: #ffffff !important;
+}
