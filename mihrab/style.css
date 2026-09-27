@@ -1,0 +1,626 @@
+html {
+  background-color: #1b4332;
+}
+
+html[data-theme-mode="dark"] {
+  background-color: #121212;
+}
+
+html[data-theme-mode="black"] {
+  background-color: #000000;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #1b4332;
+  color: #212529;
+}
+
+html[data-theme-mode="black"] body {
+  background-color: #000000 !important;
+  color: #f8f9fa !important;
+}
+
+html[data-theme-mode="dark"] body {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+body.has-custom-bg {
+  background-color: transparent !important;
+}
+
+.font-amiri {
+  font-family: 'Amiri', serif;
+}
+
+.text-brand { color: #295D4A !important; }
+.bg-brand { background-color: #295D4A !important; }
+
+.table-brand {
+  background-color: #295D4A !important;
+}
+
+.btn-brand {
+  background-color: #295D4A;
+  color: #ffffff;
+  border: none;
+}
+.btn-brand:hover {
+  background-color: #1e4537;
+  color: #ffffff;
+}
+
+.btn-outline-brand {
+  border: 1.5px solid #295D4A;
+  color: #295D4A;
+  background-color: #ffffff;
+}
+.btn-outline-brand:hover,
+.btn-outline-brand.active {
+  background-color: #295D4A;
+  color: #ffffff;
+}
+
+.quran-ticker-wrapper {
+  background: #0f281e;
+  color: #ffffff;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.quran-ticker-text {
+  display: inline-block;
+  font-family: 'Amiri', serif;
+  font-size: 1.25rem;
+  animation: slideRight 16s linear infinite;
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+#prayer-section .title-text,
+.page-main-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+#prayer-section .sub-text,
+.page-main-sub {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+#prayer-section .card,
+.zekr-card,
+.reading-ctrl-card {
+  background-color: #ffffff;
+  color: #212529;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.prayer-banner-bar {
+  background: linear-gradient(135deg, #1b4332 0%, #295D4A 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.prayers-grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .prayers-grid-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .prayers-grid-container .prayer-single-card {
+    flex: 0 0 calc(33.333% - 12px);
+    max-width: calc(33.333% - 12px);
+  }
+}
+
+@media (max-width: 767px) {
+  .prayers-grid-container {
+    display: none !important;
+  }
+  .prayer-mobile-table-wrapper {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .prayer-mobile-table-wrapper {
+    display: none !important;
+  }
+}
+
+.prayer-mobile-table-wrapper .table {
+  margin-bottom: 0;
+}
+
+.prayer-mobile-table-wrapper tr.is-next-prayer-row {
+  background-color: #2d6a4f !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.prayer-mobile-table-wrapper tr.is-next-prayer-row td {
+  color: #ffffff !important;
+}
+
+.prayer-single-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1.2rem 0.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px;
+}
+
+.prayer-single-card h6 {
+  font-weight: 700;
+  color: #295D4A;
+  margin-bottom: 0.4rem;
+}
+
+.prayer-single-card h4 {
+  font-family: monospace;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+}
+
+.prayer-single-card.is-next-prayer {
+  background-color: #2d6a4f !important;
+  border: 2px solid #52b788 !important;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.prayer-single-card.is-next-prayer h6,
+.prayer-single-card.is-next-prayer h4 {
+  color: #ffffff !important;
+}
+
+.floating-btn-wrap {
+  position: fixed;
+  bottom: 35px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 50% !important;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.floating-tasbeeh-pos {
+  left: 25px;
+}
+
+.floating-quran-pos {
+  right: 25px;
+}
+
+.floating-custom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50% !important;
+  display: block;
+}
+
+.floating-btn-wrap:hover {
+  transform: scale(1.12) translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+
+.floating-btn-wrap:active {
+  transform: scale(0.95);
+}
+
+#tasbeeh-btn {
+  background-color: #1e1e1e !important;
+  border: 4px solid #52b788 !important;
+  box-shadow: 0 0 20px rgba(82, 183, 136, 0.2) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+#tasbeeh-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 30px rgba(82, 183, 136, 0.4) !important;
+}
+
+#tasbeeh-btn #countText {
+  color: #ffffff !important;
+}
+
+#tasbeeh-btn #targetStatusText {
+  color: #94d2bd !important;
+  font-weight: 600;
+}
+
+#zekrTitle {
+  color: #52b788 !important;
+}
+
+.tasbeeh-stat-box {
+  background-color: #2b2b2b !important;
+  border: 1px solid #3d3d3d !important;
+}
+
+.tasbeeh-stat-box small {
+  color: #cfcfcf !important;
+  font-weight: 600;
+}
+
+.tasbeeh-stat-box span {
+  color: #52b788 !important;
+}
+
+#zekrList,
+#customZekrInput {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+  border: 1px solid #4a4a4a !important;
+}
+
+#customZekrInput::placeholder {
+  color: #9e9e9e !important;
+}
+
+.target-btn {
+  color: #52b788 !important;
+  border: 1px solid #52b788 !important;
+  background-color: transparent !important;
+}
+
+.target-btn.active {
+  background-color: #52b788 !important;
+  color: #121212 !important;
+  font-weight: bold;
+}
+
+#resetBtn {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+  border: 1px solid #4a4a4a !important;
+}
+
+#bookmark-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#bookmark-bar .input-group-text {
+  background-color: #295D4A !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-color: #295D4A !important;
+}
+
+#bookmark-bar #ayahBookmarkInput {
+  background-color: #ffffff;
+  color: #212529;
+  border-color: #295D4A;
+}
+
+.quran-page-card {
+  background-color: #fbf9f4 !important;
+  color: #212529;
+  border: 1px solid #e2dac9 !important;
+  min-height: 520px;
+}
+
+.quran-text-body {
+  font-size: 1.55rem;
+  line-height: 2.3;
+  color: #1a1a1a;
+  text-align: justify;
+  text-align-last: center;
+  direction: rtl;
+}
+
+.ayah-num-badge {
+  color: #295D4A;
+  font-size: 1.25rem;
+  padding: 0 4px;
+  user-select: none;
+  font-weight: bold;
+}
+
+.surah-title-header {
+  background: linear-gradient(135deg, #1b4332 0%, #295D4A 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-side-nav {
+  position: fixed;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #295D4A;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1020;
+  transition: all 0.25s ease;
+}
+
+.btn-side-nav:hover {
+  background: #295D4A;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.12);
+}
+
+.btn-side-nav.side-prev {
+  right: 25px;
+}
+
+.btn-side-nav.side-next {
+  left: 25px;
+}
+
+@media (max-width: 991px) {
+  .btn-side-nav {
+    display: none;
+  }
+}
+
+.surah-index-item {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.surah-index-item:hover {
+  background-color: #e9f5ee !important;
+  border-color: #295D4A !important;
+  transform: translateY(-2px);
+}
+
+.add-surah-box {
+  background-color: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.add-surah-label {
+  color: #295D4A;
+}
+
+.zekr-text {
+  color: #212529;
+}
+
+[data-bs-theme="dark"] .zekr-text,
+html[data-theme-mode="black"] .zekr-text {
+  color: #f8f9fa !important;
+}
+
+[data-bs-theme="dark"] .bg-white {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .modal-content {
+  background-color: #1e1e1e !important;
+  border: 1px solid #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .table-light {
+  background-color: #2b2b2b !important;
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .prayer-banner-bar {
+  background: linear-gradient(135deg, #142a20 0%, #1e3f32 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] #prayer-section .row .card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333333 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-bs-theme="dark"] #live-clock {
+  color: #52b788 !important;
+}
+
+[data-bs-theme="dark"] #iqama-timer {
+  color: #48cae4 !important;
+}
+
+[data-bs-theme="dark"] #next-prayer-name {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] #countdown-timer {
+  color: #ff6b6b !important;
+}
+
+[data-bs-theme="dark"] .prayer-single-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333333 !important;
+}
+
+[data-bs-theme="dark"] .prayer-single-card h6 {
+  color: #74c69d !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+[data-bs-theme="dark"] .prayer-single-card h4 {
+  color: #ffffff !important;
+  font-size: 1.35rem;
+}
+
+[data-bs-theme="dark"] .prayer-single-card.is-next-prayer {
+  background-color: #1b4332 !important;
+  border: 2px solid #52b788 !important;
+  box-shadow: 0 0 15px rgba(82, 183, 136, 0.3) !important;
+}
+
+[data-bs-theme="dark"] .prayer-single-card.is-next-prayer h6 {
+  color: #52b788 !important;
+}
+
+[data-bs-theme="dark"] .prayer-single-card.is-next-prayer h4 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .prayer-mobile-table-wrapper tr.is-next-prayer-row {
+  background-color: #1b4332 !important;
+  color: #52b788 !important;
+}
+
+[data-bs-theme="dark"] .prayer-mobile-table-wrapper tr.is-next-prayer-row td {
+  color: #52b788 !important;
+}
+
+[data-bs-theme="dark"] .reading-ctrl-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] #bookmark-bar {
+  background-color: #1e1e1e !important;
+  border-bottom: 1px solid #2d2d2d !important;
+}
+
+[data-bs-theme="dark"] #bookmark-bar input,
+[data-bs-theme="dark"] .modal input {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+[data-bs-theme="dark"] #bookmark-bar .input-group-text {
+  background-color: #1b4332 !important;
+  color: #52b788 !important;
+  border-color: #3d3d3d !important;
+}
+
+[data-bs-theme="dark"] #bookmark-bar #ayahBookmarkInput {
+  background-color: #212529 !important;
+  color: #ffffff !important;
+  border-color: #3d3d3d !important;
+}
+
+[data-bs-theme="dark"] .quran-page-card {
+  background-color: #1a1a1a !important;
+  border-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .quran-text-body {
+  color: #f1f1f1 !important;
+}
+
+[data-bs-theme="dark"] .ayah-num-badge {
+  color: #52b788 !important;
+}
+
+[data-bs-theme="dark"] .surah-title-header {
+  background: linear-gradient(135deg, #12281e 0%, #1e4537 100%) !important;
+  border: 1px solid rgba(82, 183, 136, 0.3);
+}
+
+[data-bs-theme="dark"] .btn-side-nav {
+  background: #212529;
+  color: #52b788;
+  border-color: #3d3d3d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+[data-bs-theme="dark"] .btn-side-nav:hover {
+  background: #52b788;
+  color: #121212;
+}
+
+[data-bs-theme="dark"] .surah-index-item {
+  border-color: #3d3d3d;
+  background-color: #212529 !important;
+}
+
+[data-bs-theme="dark"] .surah-index-item:hover {
+  background-color: #1b4332 !important;
+  border-color: #52b788 !important;
+}
+
+[data-bs-theme="dark"] .add-surah-box {
+  background-color: #212529 !important;
+  border-color: #3d3d3d !important;
+}
+
+[data-bs-theme="dark"] .add-surah-label {
+  color: #74c69d !important;
+}
+
+[data-bs-theme="dark"] #customSurahSelect {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+html[data-theme-mode="black"] #main-navbar,
+html[data-theme-mode="black"] footer {
+  background-color: #080808 !important;
+  border-color: #1a1a1a !important;
+}
+
+html[data-theme-mode="black"] .card,
+html[data-theme-mode="black"] .modal-content,
+html[data-theme-mode="black"] .zekr-card {
+  background-color: #0d0d0d !important;
+  border: 1px solid #202020 !important;
+  color: #f8f9fa !important;
+}
+
+html[data-theme-mode="black"] .text-muted,
+html[data-theme-mode="black"] small {
+  color: #a0a0a0 !important;
+}
+
+body.fullscreen-mode #main-navbar,
+body.fullscreen-mode .quran-ticker-wrapper,
+body.fullscreen-mode .floating-btn-wrap,
+body.fullscreen-mode footer {
+  display: none !important;
+}
+
+body.fullscreen-mode #prayer-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+}
