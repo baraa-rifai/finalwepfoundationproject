@@ -58,7 +58,7 @@ async function fetchDailyAyah() {
 
     if (data.code === 200 && data.data) {
       const ayah = data.data;
-      tickerEl.textContent = `﴿ ${ayah.text} ﴾ [سورة ${ayah.surah.name}: ${ayah.numberInSurah}]`;
+      tickerEl.textContent = `﴿ ${ayah.text} ﴾ [ ${ayah.surah.name}: ${ayah.numberInSurah}]`;
     }
   } catch (err) {
     tickerEl.textContent = "﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾ [سورة الرعد: 28]";
