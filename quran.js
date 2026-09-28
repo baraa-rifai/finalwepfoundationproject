@@ -278,21 +278,35 @@ document.addEventListener('keydown', (e) => {
 });
 
 (function quranswibe() {
+  const card = document.querySelector('.quran-page-card') || document.getElementById('quranTextContainer');
+  if (!card) return;
+
+  card.style.touchAction = 'pan-y';
+
   let startX = 0;
-  const targetArea = document.querySelector('.quran-page-card') || document.getElementById('quranTextContainer') || document;
+  let startY = 0;
 
-  targetArea.addEventListener('touchstart', (e) => {
-    startX = e.changedTouches[0].clientX;
-  }, { passive: true });
+  card.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
 
-  targetArea.addEventListener('touchend', (e) => {
-    const diff = e.changedTouches[0].clientX - startX;
-    if (diff > 50) {
-      nextPage();
-    } else if (diff < -50) {
-      prevPage();
+  card.addEventListener('touchend', (e) => {
+    if (!startX) return;
+    const diffX = e.changedTouches[0].clientX - startX;
+    const diffY = e.changedTouches[0].clientY - startY;
+
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+      if (diffX > 40) {
+        nextPage();
+      } else if (diffX < -40) {
+        prevPage();
+      }
     }
-  }, { passive: true });
+    startX = 0;
+    startY = 0;
+  });
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

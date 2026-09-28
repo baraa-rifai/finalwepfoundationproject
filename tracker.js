@@ -318,26 +318,35 @@ function finishCurrentWird() {
 }
 
 (function trackerSwipe() {
+  const container = document.getElementById('wirdQuranTextContainer') || document.getElementById('wirdReaderModal');
+  if (!container) return;
+
+  container.style.touchAction = 'pan-y';
+
   let startX = 0;
-  const modalEl = document.getElementById('wirdReaderModal');
-  const targetArea = modalEl || document;
+  let startY = 0;
 
-  targetArea.addEventListener('touchstart', (e) => {
-    startX = e.changedTouches[0].clientX;
-  }, { passive: true });
+  container.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
 
-  targetArea.addEventListener('touchend', (e) => {
-    const modalInstance = document.getElementById('wirdReaderModal');
-    const isModalOpen = modalInstance && modalInstance.classList.contains('show');
-    if (!isModalOpen) return;
+  container.addEventListener('touchend', (e) => {
+    if (!startX) return;
+    const diffX = e.changedTouches[0].clientX - startX;
+    const diffY = e.changedTouches[0].clientY - startY;
 
-    const diff = e.changedTouches[0].clientX - startX;
-    if (diff > 50) {
-      nextWirdPage();
-    } else if (diff < -50) {
-      prevWirdPage();
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+      if (diffX > 40) {
+        nextWirdPage();
+      } else if (diffX < -40) {
+        prevWirdPage();
+      }
     }
-  }, { passive: true });
+    startX = 0;
+    startY = 0;
+  });
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
