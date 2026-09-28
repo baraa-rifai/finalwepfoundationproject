@@ -182,12 +182,14 @@ function renderPrayerDisplay() {
 
 function updateLiveClockAndCountdown() {
   const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
+  const rawHours = now.getHours();
+  const period = rawHours >= 12 ? 'م' : 'ص';
+  const hours = String(rawHours % 12 || 12).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
 
   const liveClockEl = document.getElementById('live-clock');
-  if (liveClockEl) liveClockEl.textContent = `${hours}:${minutes}:${seconds}`;
+  if (liveClockEl) liveClockEl.textContent = `${hours}:${minutes}:${seconds} ${period}`;
 
   if (Object.keys(adjustedPrayerTimes).length > 0) {
     const nextInfo = getNextPrayerInfo(now);
