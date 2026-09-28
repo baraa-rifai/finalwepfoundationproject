@@ -317,6 +317,29 @@ function finishCurrentWird() {
   if (modalInstance) modalInstance.hide();
 }
 
+(function trackerSwipe() {
+  let startX = 0;
+  const modalEl = document.getElementById('wirdReaderModal');
+  const targetArea = modalEl || document;
+
+  targetArea.addEventListener('touchstart', (e) => {
+    startX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  targetArea.addEventListener('touchend', (e) => {
+    const modalInstance = document.getElementById('wirdReaderModal');
+    const isModalOpen = modalInstance && modalInstance.classList.contains('show');
+    if (!isModalOpen) return;
+
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff > 50) {
+      nextWirdPage();
+    } else if (diff < -50) {
+      prevWirdPage();
+    }
+  }, { passive: true });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   populateSurahSelect();
   renderAllSections();

@@ -277,6 +277,24 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+(function quranswibe() {
+  let startX = 0;
+  const targetArea = document.querySelector('.quran-page-card') || document.getElementById('quranTextContainer') || document;
+
+  targetArea.addEventListener('touchstart', (e) => {
+    startX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  targetArea.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff > 50) {
+      nextPage();
+    } else if (diff < -50) {
+      prevPage();
+    }
+  }, { passive: true });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   updateBookmarkBarText();
   renderSurahIndex();
